@@ -8,12 +8,12 @@ This is the alpha version of a basic js library for interacting with osc data se
 -jQuery
 
 #How to use
--On the command line, navigate to the location of MuseIO and run it with "muse-io --osc osc.udp://localhost:3333 --dsp".
--On the command line, navigate to the location of web-osc and run it with "node bridge.js".
--Include jQuery and Muse.js on your web page. This will create a global object called Muse.
--In your javascript, connect to osc-web with "Muse.connect()". This will create a connection to the node server through websockets and begin receiving data.
+-On the command line, navigate to the location of MuseIO and run it with "muse-io --osc osc.udp://localhost:3333 --dsp".<br/>
+-On the command line, navigate to the location of web-osc and run it with "node bridge.js".<br/>
+-Include jQuery and Muse.js on your web page. This will create a global object called Muse.<br/>
+-In your javascript, connect to osc-web with "Muse.connect()". This will create a connection to the node server through websockets and begin receiving data.<br/>
 
-Current available events:<br/>
+#Current available events:
 -<b>Muse.on.brainwave(band, obj)</b> - runs on any relative_[brainwave] event. First parameter is the band name in lowercase, second parameter is the full object sent by MuseIO. This function is best used when you want to run the same code for each band.<br/>
 -<b>Muse.on.alpha(obj)</b><br/>
 -<b>Muse.on.beta(obj)</b><br/>
