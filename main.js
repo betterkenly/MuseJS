@@ -11,12 +11,22 @@ $(function(){
         types = ['alpha', 'beta', 'delta', 'gamma', 'theta'];
 
 
-    Muse.connect();
+    Muse.connect({
+      host: 'http://127.0.0.1',
+      port: 8081,
+      socket: {
+        host: '127.0.0.1',
+        ports: {
+          client: 3334,
+          server: 3333
+        }
+      }
+    });
 
 
     /* Muse overrides */
 
-    Muse.on.brainwave = function(band, obj){
+    Muse.relative.brainwave = function(band, obj){
        var value = average(obj); 
            points[band].push(value);
 
@@ -31,16 +41,15 @@ $(function(){
         //polar.update();
     };
 
-    Muse.on.blink = function(obj){
+
+    Muse.muscle.blink = function(obj){
            
         if (obj[1] === 1){
-            $('.eyes .open').toggle();
-            $('.eyes .closed').toggle();
+            $('.eyes img').toggle();
 
             setTimeout(function(){
 
-                $('.eyes .open').toggle();
-                $('.eyes .closed').toggle();
+                $('.eyes img').toggle();
             }, 200);
         }
 
@@ -60,6 +69,21 @@ $(function(){
         }
 
         return result/num;
+    };
+
+
+    var updateGraphData = function(){
+        
+        var length, i, j;
+
+        for (i=0; i < 5; i++) {
+
+            length = graph.datasets[i].points.length
+
+            for (j = 0 ; j < length; j++ ){
+                graph.datasets[i].points[j].value = points[types[i]][j] || 0.5;
+            }
+        }
     };
 
     /* All chart.js logic is below here */
@@ -144,20 +168,6 @@ $(function(){
         });
 
     $canvas.after($(graph.generateLegend()));
-
-    var updateGraphData = function(){
-        
-        var length, i, j;
-
-        for (i=0; i < 5; i++) {
-
-            length = graph.datasets[i].points.length
-
-            for (j = 0 ; j < length; j++ ){
-                graph.datasets[i].points[j].value = points[types[i]][j] || 0.5;
-            }
-        }
-    };
 
 
    /* var polar = new Chart(pctx).PolarArea(polarData, {
