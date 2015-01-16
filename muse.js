@@ -3,6 +3,14 @@ $(function(window, undefined){
 	
 
 	window.Muse = window.Muse || {
+			eeg : {
+				channels: function(obj){
+				},
+				quantization: function(obj){
+				},
+				dropped: function(obj){
+				}
+			},
 			relative : {
 				alpha: function(obj) {
 					Muse.relative.brainwave('alpha', obj);
@@ -199,6 +207,15 @@ $(function(window, undefined){
                 },
                 '/muse/elements/raw_fft3' : function(obj){
                 	Muse.raw.fft3(obj);
+                },
+                '/muse/eeg' : function(obj){
+                	Muse.eeg.channels(obj);
+                },
+                '/muse/eeg/quantization' : function(obj){
+                	Muse.eeg.quantization(obj);
+                },
+                '/muse/eeg/dropped_samples' : function(obj){
+                	Muse.eeg.dropped(obj);
                 }
 
             }
