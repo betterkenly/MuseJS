@@ -12,15 +12,8 @@ This is the alpha version of a basic js library for interacting with osc data se
 -On the command line, navigate to the location of web-osc and run it with "node bridge.js".<br/>
 -Include jQuery and Muse.js on your web page. This will create a global object called Muse.<br/>
 -In your javascript, connect to osc-web with "Muse.connect()". This will create a connection to the node server through websockets and begin receiving data.<br/>
+-From there, look at the Muse data structure in muse.js to see the functions which can be overwritten. Note that these are in development and may change in future iterations.
 
-#Current available events:
--<b>Muse.on.brainwave(band, obj)</b> - runs on any relative_[brainwave] event. First parameter is the band name in lowercase, second parameter is the full object sent by MuseIO. This function is best used when you want to run the same code for each band.<br/>
--<b>Muse.on.alpha(obj)</b><br/>
--<b>Muse.on.beta(obj)</b><br/>
--<b>Muse.on.delta(obj)</b><br/>
--<b>Muse.on.gamma(obj)</b><br/>
--<b>Muse.on.theta(obj)</b> - the above 5 run on the specific brainwave band noted. When not defined, they will default to Muse.on.brainwave.<br/>
--<b>Muse.on.blink(obj)</b> - blink event<br/>
 
 #Example
 
